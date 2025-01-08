@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  hombre
+  nino
+  mujer
+  unisex
+}
+
+enum Brand {
+  nike
+  adidas
+  puma
+  reebok
+  jordan
+}
+
+enum Type {
+  polos
+  pantalones
+  gorras
+  zapatillas
+  sandalias
+  conjuntos
+}

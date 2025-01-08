@@ -1,0 +1,83 @@
+.fancyLink {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  color: #000;
+  /* Texto negro para fondo blanco */
+  transition: color 0.3s ease-in-out;
+}
+
+.fancyLink::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #000;
+  /* Línea negra */
+  transition: width 0.3s ease-in-out;
+}
+
+.fancyLink:hover {
+  color: #555;
+  /* Un gris oscuro al hacer hover */
+}
+
+.fancyLink:hover::before {
+  width: 100%;
+  /* Expande la línea completamente */
+}
+
+.activeLink::before {
+  width: 100%;
+  /* Mantén el subrayado activo */
+}
+
+.hoverContainer {
+  position: relative;
+}
+
+.fullScreenModule {
+  position: fixed;
+  top: 85px;
+  /* Ajusta esto según la altura de tu header */
+  left: 0;
+  width: 100%;
+  background-color: #ffff;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+.moduleContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.moduleContent h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.moduleContent p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Animación */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
