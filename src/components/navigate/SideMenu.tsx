@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/Accordion"
 
 import { IoCloseOutline } from "react-icons/io5";
+import { PiFacebookLogoLight, PiInstagramLogoLight, PiTiktokLogoLight } from "react-icons/pi";
 
 export const SideMenu = () => {
 
@@ -106,9 +107,17 @@ export const SideMenu = () => {
             </AccordionItem>
           </Accordion>
         </div>
-
-
-
+        <div className="flex items-center gap-x-2 mt-5">
+          <Link href="#">
+            <PiFacebookLogoLight size={20} />
+          </Link>
+          <Link href="#">
+            <PiInstagramLogoLight size={20} />
+          </Link>
+          <Link href="#">
+            <PiTiktokLogoLight size={20} />
+          </Link>
+        </div>
       </nav>
 
     </>

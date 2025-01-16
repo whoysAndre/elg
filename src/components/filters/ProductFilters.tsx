@@ -22,11 +22,11 @@ interface FilterSection {
 const filterSections: FilterSection[] = [
   {
     title: "Tipo",
-    options: ["polos", "pantalones", "gorros", "zapatillas", "deportivas", "conjuntos", "ultimas", "exclusivas"]
+    options: ["polos", "pantalones", "gorros", "zapatillas", "deportivas", "conjuntos","exclusivas"]
   },
   {
     title: "Marca",
-    options: ["Nike", "Adidas", "Jordan"]
+    options: ["nike", "adidas", "jordan","reebok"]
   }
 ]
 
@@ -69,7 +69,7 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
   }
 
   const FilterContent = () => (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       {filterSections.map((section) => (
         <div key={section.title}>
           <div

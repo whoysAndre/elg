@@ -3,17 +3,18 @@ import heroImgSection from "/public/images/hero-banner.svg";
 import { sectionFont } from "@/config/fonts";
 import Link from "next/link";
 import { ProductSectionSlide } from "@/components/products/ProductSectionSlide";
-import { initialData } from "@/seed/seed";
 import { DeportSection, FinalSection, UltimateSections } from "@/components";
+import { getProductByTypeExclusive } from "@/actions/products/get-product-by-type.action";
+
 
 export const metadata = {
   title: 'Elegant figure',
   description: '',
 };
 
-export default function Home() {
+export default async function Home() {
 
-  const products = initialData.products;
+  const productsExclusive = await getProductByTypeExclusive("exclusivas");
 
   return (
     <>
@@ -40,12 +41,12 @@ export default function Home() {
       {/* Slide products sections */}
       <div className={`px-5 mt-5 ${sectionFont.className}`}>
 
-        <h3 className="text-2xl md:text-4xl ">
+        <h3 className="text-2xl md:text-4xl md:px-3">
           Últimas llegadas
         </h3>
-        <ProductSectionSlide
+        {/* <ProductSectionSlide
           products={products}
-        />
+        /> */}
       </div>
 
       {/* Ultimate */}
@@ -54,11 +55,11 @@ export default function Home() {
       {/* Exclusive sections */}
       <div className={`px-5 mt-10 ${sectionFont.className}`}>
 
-        <h3 className="text-2xl md:text-4xl ">
+        <h3 className="text-2xl md:text-4xl md:px-3">
           Modelos exclusivos
         </h3>
         <ProductSectionSlide
-          products={products}
+          products={productsExclusive}
         />
       </div>
 

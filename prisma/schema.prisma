@@ -29,4 +29,37 @@ enum Type {
   zapatillas
   sandalias
   conjuntos
+  ultimas
+  exclusivas
+}
+
+model Product {
+  id        String   @id @default(uuid())
+  code      String   @unique
+  stock   Int
+  price     Float
+  sizes     String[]
+  slug      String   @unique // Asegura que cada producto tenga un slug único
+  title     String
+  type      Type
+  brand     Brand
+  gender    Gender
+  ProductImage ProductImage[]
+
+}
+
+model ProductImage {
+  id        String   @id @default(uuid())
+  url       String
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  username String @unique
+  password String
+  role     String @default("admin")
 }

@@ -6,12 +6,24 @@ import "swiper/css/navigation";
 import "./productsectionslide.css";
 // Import required modules
 import { Navigation } from "swiper/modules";
-import { SeedProduct } from "@/seed/seed";
-import Image from "next/image";
 import Link from "next/link";
+import { ProductImage } from "../maintenance/ProductImage";
+
+interface Product {
+  images: string[];
+  stock: number;
+  price: number;
+  sizes: string[];
+  slug: string;
+  title: string;
+  type: string;
+  gender: string;
+  brand: string;
+  code:string;
+}
 
 interface Props {
-  products: SeedProduct[];
+  products: Product[];
 }
 
 export const ProductSectionSlide = ({ products }: Props) => {
@@ -35,9 +47,9 @@ export const ProductSectionSlide = ({ products }: Props) => {
     >
       {products.map((product) => (
         <SwiperSlide key={product.slug} className="flex flex-col md:px-10"> {/* Ancho máximo por slide */}
-          <Link href="#" className="">
-            <Image
-              src={`/assets/${product.images[0]}`}
+          <Link href={`/products/${product.slug}`} className="">
+            <ProductImage
+              src={`${product.images[0]}`}
               alt={product.title}
               width={800} // Reducido
               height={800} // Reducido

@@ -1,13 +1,13 @@
 "use client"
 import React from 'react'
-import { SeedProduct } from '@/seed/seed'
-import { Filters } from '@/types/products'
+import { Filters, OtherProduct, ValidBrands, ValidTypes } from '@/types/products'
 import { ProductFilters } from '../filters/ProductFilters'
 import { ProductCard } from './ProductCard'
 import { motion, AnimatePresence } from "framer-motion"
 
+
 interface Props {
-  products: SeedProduct[];
+  products: OtherProduct[];
 }
 
 export const ProductsFiltered = ({ products }: Props) => {
@@ -16,20 +16,20 @@ export const ProductsFiltered = ({ products }: Props) => {
     types: [],
     brands: []
   })
-
+  
 
   const filteredProducts = React.useMemo(() => {
     return products.filter(product => {
-      const typeMatch = filters.types.length === 0 || filters.types.includes(product.type)
-      const brandMatch = filters.brands.length === 0 || filters.brands.includes(product.brand)
+      const typeMatch = filters.types.length === 0 || filters.types.includes(product.type as ValidTypes)
+      const brandMatch = filters.brands.length === 0 || filters.brands.includes(product.brand as ValidBrands)
       return typeMatch && brandMatch
     })
   }, [filters])
 
   return (
-    <div className="lg:grid lg:grid-cols-[240px_1fr] lg:gap-x-8">
+    <div className="lg:grid lg:grid-cols-[240px_1fr] lg:gap-x-8 px-5 md:px-0">
       {/* Filters */}
-      <div className="mb-8 lg:mb-0">
+      <div className="mb-8 lg:mb-0 sticky top-0 self-start">
         <ProductFilters filters={filters} onFilterChange={setFilters} />
       </div>
 

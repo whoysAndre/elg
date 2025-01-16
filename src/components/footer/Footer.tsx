@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 export const Footer = () => {
@@ -13,15 +14,15 @@ export const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Phone size={18} />
-              <span className="text-sm">+1 234 567 890</span>
+              <span className="text-sm">+51 984 723 637</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={18} />
-              <span className="text-sm">info@tutienda.com</span>
+              <span className="text-sm">elegantfig@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={18} />
-              <span className="text-sm">123 Calle Principal, Ciudad</span>
+              <span className="text-sm">Av grau 448, Huacho</span>
             </div>
             <div className="flex gap-4 pt-4">
               <Facebook className="w-5 h-5 hover:text-white cursor-pointer" />
@@ -35,8 +36,8 @@ export const Footer = () => {
         <div>
           <h3 className="text-white uppercase text-sm font-medium mb-4">Shop</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-sm hover:text-white">Ofertas</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Zapatillas</a></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Ofertas</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Zapatillas</Link></li>
           </ul>
         </div>
 
@@ -44,12 +45,12 @@ export const Footer = () => {
         <div>
           <h3 className="text-white uppercase text-sm font-medium mb-4">Mujer</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-sm hover:text-white">Zapatillas</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Indumentarias</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Nike</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Adidas</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Jordan</a></li>
-            <li><a href="#" className="text-sm hover:text-white">New Balance</a></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">Zapatillas</Link></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">Indumentarias</Link></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">Nike</Link></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">Adidas</Link></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">Jordan</Link></li>
+            <li><Link href="/tienda/mujer" className="text-sm hover:text-white">New Balance</Link></li>
           </ul>
         </div>
 
@@ -57,12 +58,12 @@ export const Footer = () => {
         <div>
           <h3 className="text-white uppercase text-sm font-medium mb-4">Hombre</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-sm hover:text-white">Zapatillas</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Indumentaria</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Nike</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Adidas</a></li>
-            <li><a href="#" className="text-sm hover:text-white">Jordan</a></li>
-            <li><a href="#" className="text-sm hover:text-white">New Balance</a></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Zapatillas</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Indumentaria</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Nike</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Adidas</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">Jordan</Link></li>
+            <li><Link href="/tienda/hombre" className="text-sm hover:text-white">New Balance</Link></li>
           </ul>
         </div>
       </div>

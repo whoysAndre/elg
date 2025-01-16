@@ -1,0 +1,62 @@
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Cambiado a "contain" para que encaje */
+}
+
+.swiper {
+  width: 100%;
+  height: 500px; /* Ajusta la altura según tus necesidades */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mySwiper2 .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mySwiper .swiper-slide {
+  width: auto;
+  height: auto;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+/* Contenedor que envolverá la imagen */
+.image-container {
+  position: relative;
+  overflow: hidden; /* Esconde la parte ampliada fuera del contenedor */
+  width: 100%; /* Ajusta el ancho al contenedor */
+  height: 100%; /* Ajusta la altura al contenedor */
+  cursor: zoom-in; /* Cambia el cursor para mostrar que es ampliable */
+}
+
+/* Imagen base */
+.image-container img {
+  transition: transform 0.2s ease-in-out; /* Animación suave */
+}
+
+/* Efecto lupa al pasar el cursor */
+.image-container:hover img {
+  transform: scale(2); /* Incrementa el zoom (2x) */
+  cursor: zoom-in; /* Mantiene el cursor de lupa */
+}
+
+/* Control del movimiento al hover */
+.image-container:hover {
+  overflow: visible; /* Permite que la parte ampliada sea visible */
+}
+
+
+@media (max-width: 1200px) {
+  .swiper {
+    width: 100%;
+    height: 300px; /* Ajusta para pantallas más pequeñas */
+  }
+}

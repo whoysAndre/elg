@@ -3,17 +3,22 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import styles from "./header.module.css";
-import { sectionFont } from "@/config/fonts";
+import { sectionFont, titleFont } from "@/config/fonts";
 import { PiTiktokLogoLight, PiFacebookLogoLight, PiInstagramLogoLight } from "react-icons/pi";
 import { SiNike, SiAdidas, SiReebok, SiJordan } from "react-icons/si";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { ChevronDown, Search } from 'lucide-react';
-import { Input } from "../ui/Input";
+import { ChevronDown } from 'lucide-react';
 import { SideMenu } from "./SideMenu";
 import { useUIStore } from "@/store";
+import { useSession } from "next-auth/react"
+import { IoLogOutOutline } from "react-icons/io5";
+import { logout } from "@/actions/auth/logout";
 
 export const Header = () => {
   const openMenu = useUIStore(state => state.openSideMenu);
+
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
 
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -75,23 +80,26 @@ export const Header = () => {
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow-sm ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       {/* Pre nav */}
-      <div className="hidden w-full bg-gray-100 px-14 py-3 md:flex items-center justify-between">
-        <div className="flex items-center gap-x-2">
-          <Link href="#">
-            <PiFacebookLogoLight size={20} />
-          </Link>
-          <Link href="#">
-            <PiInstagramLogoLight size={20} />
-          </Link>
-          <Link href="#">
-            <PiTiktokLogoLight size={20} />
-          </Link>
-        </div>
-
+      <div className="hidden w-full bg-gray-100 px-14 py-3 md:flex items-center justify-end">
         <div>
-          <Link href="#" className="text-sm font-semibold">
-            Iniciar sesión
-          </Link>
+          {
+            isAuthenticated ? (
+              <button
+                className="w-full flex items-center hover:bg-gray-100 rounded transition-all gap-2 pl-3"
+                onClick={() => logout()}
+              >
+                <IoLogOutOutline size={20} />
+                <span className={`${titleFont.className} text-sm`}>Salir</span>
+
+              </button>
+            ) : (
+              <div>
+                <Link href="/auth/login" className="text-sm font-semibold">
+                  Iniciar sesión
+                </Link>
+              </div>
+            )
+          }
         </div>
       </div>
 
@@ -137,16 +145,16 @@ export const Header = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <div className={styles.moduleContent}>
-                  <Link href="">
+                  <Link href="/tienda/hombre">
                     <SiNike size={100} />
                   </Link>
-                  <Link href="">
+                  <Link href="/tienda/hombre">
                     <SiAdidas size={100} />
                   </Link>
-                  <Link href="">
+                  <Link href="/tienda/hombre">
                     <SiReebok size={100} />
                   </Link>
-                  <Link href="">
+                  <Link href="/tienda/hombre">
                     <SiJordan size={100} />
                   </Link>
                 </div>
@@ -156,17 +164,21 @@ export const Header = () => {
         </div>
 
         <div className="hidden lg:relative lg:block">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Buscar"
-            className="pl-8"
-          />
+          <div className="flex items-center gap-x-2">
+            <Link href="#">
+              <PiFacebookLogoLight size={20} />
+            </Link>
+            <Link href="#">
+              <PiInstagramLogoLight size={20} />
+            </Link>
+            <Link href="#">
+              <PiTiktokLogoLight size={20} />
+            </Link>
+          </div>
         </div>
 
         {/* reponsive */}
         <div className="lg:hidden flex items-center gap-x-5">
-          <Search className="text-muted-foreground" size={25} />
           <RxHamburgerMenu size={25} onClick={openMenu} />
         </div>
 

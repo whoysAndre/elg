@@ -99,7 +99,8 @@ export const initialData: SeedData = {
         },
         {
             "images": [
-                "jordan-1.webp"
+                "jordan-1.webp",
+                "gorra-nike.png"
             ],
             "inStock": 4,
             "price": 620,

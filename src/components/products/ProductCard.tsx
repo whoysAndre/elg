@@ -1,12 +1,12 @@
 "use client"
-
-import Image from "next/image"
 import { motion } from "framer-motion"
-import type { Product } from "@/types/products"
+import type { OtherProduct } from "@/types/products"
+import { ProductImage } from "../maintenance/ProductImage"
 
-export function ProductCard({ title, price, images, inStock, sizes, brand }: Product) {
+export function ProductCard({ title, price, images, stock, sizes, brand, slug }: OtherProduct) {
   return (
-    <motion.div
+    <motion.a
+      href={`/products/${slug}`}
       layout
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -14,16 +14,16 @@ export function ProductCard({ title, price, images, inStock, sizes, brand }: Pro
       className="group cursor-pointer"
     >
       <div className="aspect-square overflow-hidden bg-gray-100 rounded-lg relative">
-        <Image
-          src={`/assets/${images[0]}`} // Replace with actual image path
+        <ProductImage
+          src={`${images[0]}`} // Replace with actual image path
           alt={title}
           width={500}
           height={500}
           className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
         />
-        {inStock < 3 && (
+        {stock < 3 && (
           <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md text-xs">
-            ¡Últimas {inStock} unidades!
+            ¡Últimas {stock} unidades!
           </div>
         )}
       </div>
@@ -43,7 +43,7 @@ export function ProductCard({ title, price, images, inStock, sizes, brand }: Pro
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.a>
   )
 }
 
