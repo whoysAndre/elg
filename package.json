@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run prisma:deploy && next build",
+    "build": "bun x prisma migrate deploy && bun x prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:deploy": "npx prisma migrate deploy && prisma generate"
+    "prisma:deploy": "bunx prisma migrate deploy && npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
