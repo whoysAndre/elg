@@ -71,9 +71,9 @@ export const SideMenu = () => {
               </AccordionTrigger>
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
-                  <li><Link href="">Zapatillas</Link></li>
-                  <li><Link href="">Polos</Link></li>
-                  <li><Link href="">Pantalones</Link></li>
+                  <li><Link href="/tienda/hombre">Zapatillas</Link></li>
+                  <li><Link href="/tienda/hombre">Polos</Link></li>
+                  <li><Link href="/tienda/hombre">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>
@@ -85,29 +85,29 @@ export const SideMenu = () => {
               </AccordionTrigger>
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
-                  <li><Link href="">Zapatillas</Link></li>
-                  <li><Link href="">Polos</Link></li>
-                  <li><Link href="">Pantalones</Link></li>
+                  <li><Link href="/tienda/mujer">Zapatillas</Link></li>
+                  <li><Link href="/tienda/mujer">Polos</Link></li>
+                  <li><Link href="/tienda/mujer">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>
-                <Link href="/tienda/niño" className="font-semibold text-[1.3rem]">
+                <Link href="/tienda/nino" className="font-semibold text-[1.3rem]">
                   Niño
                 </Link>
               </AccordionTrigger>
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
-                  <li><Link href="">Zapatillas</Link></li>
-                  <li><Link href="">Polos</Link></li>
-                  <li><Link href="">Pantalones</Link></li>
+                  <li><Link href="/tienda/nino">Zapatillas</Link></li>
+                  <li><Link href="/tienda/nino">Polos</Link></li>
+                  <li><Link href="/tienda/nino">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
-        <div className="flex items-center gap-x-2 mt-5">
+        <div className="flex items-center gap-x-5 mt-5">
           <Link href="#">
             <PiFacebookLogoLight size={20} />
           </Link>
