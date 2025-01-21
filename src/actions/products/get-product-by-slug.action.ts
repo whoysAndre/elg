@@ -26,7 +26,8 @@ export const getProductBySlug = async(slug:string)=>{
       type: product.type,
       title: product.title,
       gender: product.gender,
-      brand: product.gender
+      brand: product.gender,
+      category: product.category
     }
 
     return productPlain;

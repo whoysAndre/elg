@@ -1,30 +1,31 @@
-"use client"
+'use client'
+
 import React from 'react'
-import { Filters, OtherProduct, ValidBrands, ValidTypes } from '@/types/products'
+import { Filters, OtherProduct, ValidBrands, ValidTypes, ValidCategories } from '@/types/products'
 import { ProductFilters } from '../filters/ProductFilters'
 import { ProductCard } from './ProductCard'
 import { motion, AnimatePresence } from "framer-motion"
 
-
 interface Props {
-  products: OtherProduct[];
+  products: OtherProduct[]
 }
 
 export const ProductsFiltered = ({ products }: Props) => {
-
   const [filters, setFilters] = React.useState<Filters>({
-    types: [],
-    brands: []
+    types: ['zapatillas'], // Siempre iniciado con zapatillas
+    brands: [],
+    categories: []
   })
-  
 
   const filteredProducts = React.useMemo(() => {
     return products.filter(product => {
       const typeMatch = filters.types.length === 0 || filters.types.includes(product.type as ValidTypes)
       const brandMatch = filters.brands.length === 0 || filters.brands.includes(product.brand as ValidBrands)
-      return typeMatch && brandMatch
+      const categoryMatch = filters.categories.length === 0 || filters.categories.includes(product.category as ValidCategories)
+      
+      return typeMatch && brandMatch && categoryMatch
     })
-  }, [filters])
+  }, [filters, products])
 
   return (
     <div className="lg:grid lg:grid-cols-[240px_1fr] lg:gap-x-8 px-5 md:px-0">

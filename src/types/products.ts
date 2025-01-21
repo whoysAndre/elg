@@ -1,5 +1,6 @@
 export type ValidTypes = 'polos' | 'pantalones' | 'gorros' | 'zapatillas' | 'deportivas' | 'conjuntos' | 'ultimas' | 'exclusivas';
 export type ValidBrands = 'Nike' | 'Adidas' | 'Jordan' | 'Reebok';
+export type ValidCategories = 'chimpunes' | 'deportivas' | 'exclusivas' | 'ultimas' | 'estandar'
 
 export interface Product {
     images: string[];
@@ -14,8 +15,9 @@ export interface Product {
 }
 
 export interface Filters {
-    types: ValidTypes[];
-    brands: ValidBrands[];
+    types: ValidTypes[]
+    brands: ValidBrands[]
+    categories: ValidCategories[]
 }
 
 export interface OtherProduct {
@@ -29,4 +31,5 @@ export interface OtherProduct {
     gender: string;
     brand: string;
     code: string;
+    category:string
 }

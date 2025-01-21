@@ -24,6 +24,7 @@ export const getProductByGender = async(gender:string)=>{
       type: product.type,
       title: product.title,
       gender: product.gender,
+      category: product.category,
       brand: product.brand
     }));
 

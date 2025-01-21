@@ -2,12 +2,25 @@ export const revalidate = 60480;
 
 import { getProductBySlug } from "@/actions/products/get-product-by-slug.action";
 import { ContentDetailTotalProduct } from "@/components";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  // read route params
+  const slug = (await params).slug;
+  const product = await getProductBySlug(slug); 
+  return {
+    title: `${product?.title}`,
+  }
+}
+
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
 
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  
   if(!product) return;
 
   return (

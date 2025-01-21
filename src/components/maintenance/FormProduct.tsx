@@ -24,7 +24,8 @@ interface Inputs {
   stock: number;
   sizes: string[];
   brand: string;
-  type: string
+  type: string;
+  category: string;
   gender: 'hombre' | 'mujer' | 'nino' | 'unisex';
   images?: FileList;
 }
@@ -72,6 +73,7 @@ export const FormProduct = ({ product }: Props) => {
     formData.append('sizes', productToSave.sizes.toString());
     formData.append('brand', productToSave.brand);
     formData.append('type', productToSave.type);
+    formData.append('category', productToSave.category);
     formData.append('gender', productToSave.gender);
     if (images) {
       for (let i = 0; i < images.length; i++) {
@@ -139,16 +141,22 @@ export const FormProduct = ({ product }: Props) => {
           </div>
 
           <div className="flex flex-col mb-2 gap-1.5">
-            <Label htmlFor="category" className={`${titleFont.className}`}>Categoría</Label>
-            <select {...register('type', { required: true })} className="p-2 w-full lg:w-[385px] border rounded-md bg-white" id="category">
+            <Label htmlFor="type" className={`${titleFont.className}`}>Tipo</Label>
+            <select {...register('type', { required: true })} className="p-2 w-full lg:w-[385px] border rounded-md bg-white" id="type">
               <option value="">[Seleccione]</option>
-              <option value="polos">Polo</option>
               <option value="zapatillas">Zapatilla</option>
-              <option value="gorras">Gorra</option>
-              <option value="pantalones">Pantalones</option>
-              <option value="exclusivas">Exclusiva</option>
-              <option value="conjuntos">Conjunto</option>
-              <option value="ultimas">Ultimas</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col mb-2 gap-1.5">
+            <Label htmlFor="category" className={`${titleFont.className}`}>Categoría</Label>
+            <select {...register('category', { required: true })} className="p-2 w-full lg:w-[385px] border rounded-md bg-white" id="category">
+              <option value="">[Seleccione]</option>
+              <option value="estandar">Estandar</option>
+              <option value="deportivas">Deportivas</option>
+              <option value="chimpunes">Chimpunes</option>
+              <option value="ultimas">Últimas</option>
+              <option value="exclusivas">Exclusivas</option>
             </select>
           </div>
 

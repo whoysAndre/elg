@@ -1,7 +1,7 @@
 'use server'
 
 import { prisma } from "@/lib/prisma";
-import { Brand, Gender, Product, Type } from "@prisma/client";
+import { Brand, Category, Gender, Product, Type } from "@prisma/client";
 import { z } from "zod";
 import { v2 as cloudinary } from 'cloudinary';
 import { revalidatePath } from "next/cache";
@@ -19,6 +19,7 @@ const productSchema = z.object({
   sizes: z.coerce.string().transform((val) => val.split(',')),
   slug: z.string().min(3).max(255).optional(),
   type: z.nativeEnum(Type),
+  category: z.nativeEnum(Category),
   brand: z.nativeEnum(Brand),
   gender: z.nativeEnum(Gender),
 });

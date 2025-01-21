@@ -21,6 +21,7 @@ export const getAllProducts = async()=>{
     stock: product.stock,
     brand: product.brand,
     gender: product.gender,
+    category: product.category,
     image: product.ProductImage[0]?.url || ""
   }));
 

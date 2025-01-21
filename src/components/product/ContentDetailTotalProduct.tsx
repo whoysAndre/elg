@@ -4,12 +4,9 @@ import { ProductSlideShow } from "./ProductSlideShow";
 import { QuantitySelector } from "./QuantitySelector";
 import { SizeSelector } from "./SizeSelector";
 import { StockLabel } from "./StockLabel";
-
 import { useState } from "react";
 import { OtherProduct } from "@/types/products";
 import { ProductSlideShowMobile } from "./ProductSlideShowMobile";
-
-
 
 interface Props {
   product:OtherProduct;
@@ -29,7 +26,7 @@ export const ContentDetailTotalProduct = ({ product }: Props) => {
     }
 
     const message = `Hola, estoy interesado en el producto:\n\n` +
-      `Codigo: ${product.code}` +
+      `👨‍🚀 Codigo: ${product.code} \n`+
       `📦 Producto: ${product.title}\n` +
       `📏 Talla: ${selectedSize}\n` +
       `💵 Precio: s/.${product.price}\n` +
@@ -38,7 +35,7 @@ export const ContentDetailTotalProduct = ({ product }: Props) => {
       `¿Está disponible?`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/51924998757?text=${encodedMessage}`;
+    const whatsappURL = `https://wa.me/51984723637?text=${encodedMessage}`;
 
     window.open(whatsappURL, "_blank");
   };

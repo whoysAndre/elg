@@ -1,9 +1,8 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import * as React from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Filter } from 'lucide-react'
-import type { Filters, ValidTypes, ValidBrands } from "@/types/products"
 import { Button } from "@/components/ui/Button"
 import {
   Sheet,
@@ -13,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/Sheet"
+import { Filters, ValidTypes, ValidBrands, ValidCategories } from '@/types/products'
 
 interface FilterSection {
   title: string
@@ -22,11 +22,15 @@ interface FilterSection {
 const filterSections: FilterSection[] = [
   {
     title: "Tipo",
-    options: ["polos", "pantalones", "gorros", "zapatillas", "deportivas", "conjuntos","exclusivas"]
+    options: ["zapatillas"]
+  },
+  {
+    title: "Categoría",
+    options: ["chimpunes", "deportivas", "exclusivas", "ultimas"]
   },
   {
     title: "Marca",
-    options: ["nike", "adidas", "jordan","reebok"]
+    options: ["nike", "adidas", "puma", "reebok", "jordan"]
   }
 ]
 
@@ -36,7 +40,17 @@ interface ProductFiltersProps {
 }
 
 export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps) {
-  const [openSections, setOpenSections] = React.useState<string[]>(["Tipo", "Marca"])
+  const [openSections, setOpenSections] = React.useState<string[]>(["Tipo", "Categoría", "Marca"])
+
+  // Establecer "zapatillas" como valor por defecto al montar el componente
+  React.useEffect(() => {
+    if (filters.types.length === 0) {
+      onFilterChange({
+        ...filters,
+        types: ['zapatillas']
+      })
+    }
+  }, [])
 
   const toggleSection = (section: string) => {
     setOpenSections(prev =>
@@ -48,28 +62,23 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
 
   const handleCheckboxChange = (section: string, option: string) => {
     if (section === "Tipo") {
-      const newTypes = filters.types.includes(option as ValidTypes)
-        ? filters.types.filter((type:string) => type !== option)
-        : [...filters.types, option as ValidTypes]
-
-      onFilterChange({
-        ...filters,
-        types: newTypes
-      })
+      // Para Type, siempre mantenemos "zapatillas" seleccionado
+      onFilterChange({ ...filters, types: ['zapatillas'] })
     } else if (section === "Marca") {
       const newBrands = filters.brands.includes(option as ValidBrands)
-        ? filters.brands.filter((brand:string) => brand !== option)
+        ? filters.brands.filter((brand) => brand !== option)
         : [...filters.brands, option as ValidBrands]
-
-      onFilterChange({
-        ...filters,
-        brands: newBrands
-      })
+      onFilterChange({ ...filters, brands: newBrands })
+    } else if (section === "Categoría") {
+      const newCategories = filters.categories.includes(option as ValidCategories)
+        ? filters.categories.filter((category) => category !== option)
+        : [...filters.categories, option as ValidCategories]
+      onFilterChange({ ...filters, categories: newCategories })
     }
   }
 
   const FilterContent = () => (
-    <div className="space-y-4 ">
+    <div className="space-y-4">
       {filterSections.map((section) => (
         <div key={section.title}>
           <div
@@ -103,12 +112,17 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
                       checked={
                         section.title === "Tipo"
                           ? filters.types.includes(option as ValidTypes)
-                          : filters.brands.includes(option as ValidBrands)
+                          : section.title === "Marca"
+                          ? filters.brands.includes(option as ValidBrands)
+                          : filters.categories.includes(option as ValidCategories)
                       }
                       onChange={() => handleCheckboxChange(section.title, option)}
                       className="h-4 w-4 rounded border-gray-300"
+                      disabled={section.title === "Tipo"} // Deshabilitar la opción de tipo ya que siempre será "zapatillas"
                     />
-                    <span className="text-sm text-gray-600 capitalize">{option}</span>
+                    <span className="text-sm text-gray-600 capitalize">
+                      {option}
+                    </span>
                   </label>
                 ))}
               </motion.div>
@@ -121,7 +135,7 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
 
   return (
     <>
-      {/* Mobile Filter Sheet */}
+      {/* Mobile filters sheet */}
       <div className="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
@@ -144,7 +158,7 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
         </Sheet>
       </div>
 
-      {/* Desktop Filters */}
+      {/* Desktop filters */}
       <div className="hidden lg:block">
         <h2 className="text-lg font-semibold mb-4">Filtros</h2>
         <FilterContent />
@@ -152,4 +166,3 @@ export function ProductFilters({ filters, onFilterChange }: ProductFiltersProps)
     </>
   )
 }
-

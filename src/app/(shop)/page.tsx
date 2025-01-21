@@ -3,8 +3,8 @@ import heroImgSection from "/public/images/hero-banner.svg";
 import { sectionFont } from "@/config/fonts";
 import Link from "next/link";
 import { ProductSectionSlide } from "@/components/products/ProductSectionSlide";
-import { DeportSection, FinalSection, UltimateSections } from "@/components";
-import { getProductByTypeExclusive } from "@/actions/products/get-product-by-type.action";
+import { DeportSection, FinalSection } from "@/components";
+import { getProductByCategory } from "@/actions/products/get-product-by-category.action";
 
 
 export const metadata = {
@@ -14,7 +14,8 @@ export const metadata = {
 
 export default async function Home() {
 
-  const productsExclusive = await getProductByTypeExclusive("exclusivas");
+  const productsExclusive = await getProductByCategory("exclusivas");
+  const productsUltimate = await getProductByCategory("ultimas");
 
   return (
     <>
@@ -44,13 +45,13 @@ export default async function Home() {
         <h3 className="text-2xl md:text-4xl md:px-3">
           Últimas llegadas
         </h3>
-        {/* <ProductSectionSlide
-          products={products}
-        /> */}
+        <ProductSectionSlide
+          products={productsUltimate}
+        />
       </div>
 
-      {/* Ultimate */}
-      <UltimateSections />
+      {/* Exclusive models */}
+      <DeportSection />
 
       {/* Exclusive sections */}
       <div className={`px-5 mt-10 ${sectionFont.className}`}>
@@ -63,15 +64,11 @@ export default async function Home() {
         />
       </div>
 
-      {/* Exclusive models */}
-      <DeportSection/>
+
 
 
       {/* Final Section */}
-      <FinalSection/>
-
-
-
+      <FinalSection />
 
     </>
   )
