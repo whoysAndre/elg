@@ -78,28 +78,7 @@ export const Header = () => {
     <header className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow-sm ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       {/* Pre nav */}
       
-      {/* <div className="hidden w-full bg-gray-100 px-14 py-3 md:flex items-center justify-end">
-        <div>
-          {
-            isAuthenticated ? (
-              <button
-                className="w-full flex items-center hover:bg-gray-100 rounded transition-all gap-2 pl-3"
-                onClick={() => logout()}
-              >
-                <IoLogOutOutline size={20} />
-                <span className={`${titleFont.className} text-sm`}>Salir</span>
 
-              </button>
-            ) : (
-              <div>
-                <Link href="/auth/login" className="text-sm font-semibold">
-                  Iniciar sesión
-                </Link>
-              </div>
-            )
-          }
-        </div>
-      </div> */}
 
       {/* Nav */}
       <nav className="px-5 lg:px-14 py-5 flex justify-between items-center bg-white/95 backdrop-blur-sm">
