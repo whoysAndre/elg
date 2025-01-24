@@ -10,13 +10,9 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { ChevronDown } from 'lucide-react';
 import { SideMenu } from "./SideMenu";
 import { useUIStore } from "@/store";
-import { useSession } from "next-auth/react"
 
 export const Header = () => {
   const openMenu = useUIStore(state => state.openSideMenu);
-
-  const { data: session } = useSession();
-
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -76,9 +72,6 @@ export const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 bg-white shadow-sm ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-      {/* Pre nav */}
-      
-
 
       {/* Nav */}
       <nav className="px-5 lg:px-14 py-5 flex justify-between items-center bg-white/95 backdrop-blur-sm">
