@@ -2,7 +2,6 @@
 import { authenticate } from "@/actions/auth/login";
 import { titleFont } from "@/config/fonts";
 import clsx from "clsx";
-import Link from "next/link"
 import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import { IoInformationOutline } from "react-icons/io5";
