@@ -136,7 +136,7 @@ export const FormProduct = ({ product }: Props) => {
               <option value="adidas">Adidas</option>
               <option value="puma">Puma</option>
               <option value="reebok">Reebok</option>
-              <option value="reebok">Jordan</option>
+              <option value="jordan">Jordan</option>
             </select>
           </div>
 
