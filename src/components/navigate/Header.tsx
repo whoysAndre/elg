@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import styles from "./header.module.css";
-import { sectionFont, titleFont } from "@/config/fonts";
+import { sectionFont} from "@/config/fonts";
 import { PiTiktokLogoLight, PiFacebookLogoLight, PiInstagramLogoLight } from "react-icons/pi";
 import { SiNike, SiAdidas, SiReebok, SiJordan } from "react-icons/si";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -11,8 +11,6 @@ import { ChevronDown } from 'lucide-react';
 import { SideMenu } from "./SideMenu";
 import { useUIStore } from "@/store";
 import { useSession } from "next-auth/react"
-import { IoLogOutOutline } from "react-icons/io5";
-import { logout } from "@/actions/auth/logout";
 
 export const Header = () => {
   const openMenu = useUIStore(state => state.openSideMenu);
