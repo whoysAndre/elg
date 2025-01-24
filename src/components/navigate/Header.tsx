@@ -16,7 +16,6 @@ export const Header = () => {
   const openMenu = useUIStore(state => state.openSideMenu);
 
   const { data: session } = useSession();
-  const isAuthenticated = !!session?.user;
 
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
