@@ -24,7 +24,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if(!product) return;
 
   return (
-    <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-5 gap-8 container mx-auto">
+    <div className="md:mt-28 mb-20 grid grid-cols-1 md:grid-cols-5 gap-8 container mx-auto">
 
       <ContentDetailTotalProduct
         product={product}
