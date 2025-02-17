@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Gender } from "@prisma/client";
 
 export const getProductByGender = async(gender:string)=>{
+  
   try {
     
     const products = await prisma.product.findMany({
@@ -11,6 +12,9 @@ export const getProductByGender = async(gender:string)=>{
       },
       include:{
         ProductImage: true
+      },
+      orderBy:{
+        id:'asc'
       }
     });
 

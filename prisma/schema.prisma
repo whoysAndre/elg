@@ -7,6 +7,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Product {
+  id           String         @id @default(uuid())
+  price        Float
+  sizes        String[]
+  slug         String         @unique
+  title        String
+  type         Type
+  brand        Brand
+  gender       Gender
+  code         String         @unique
+  stock        Int
+  category     Category
+  ProductImage ProductImage[]
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  username String @unique
+  password String
+  role     String @default("admin")
+}
+
 enum Gender {
   hombre
   nino
@@ -28,38 +58,8 @@ enum Type {
 
 enum Category {
   chimpunes
-  deportivas
   exclusivas
   ultimas
+  deportivas
   estandar
-}
-
-model Product {
-  id           String         @id @default(uuid())
-  code         String         @unique
-  stock        Int
-  price        Float
-  sizes        String[]
-  slug         String         @unique // Asegura que cada producto tenga un slug único
-  title        String
-  type         Type
-  category     Category
-  brand        Brand
-  gender       Gender
-  ProductImage ProductImage[]
-}
-
-model ProductImage {
-  id        String  @id @default(uuid())
-  url       String
-  productId String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-}
-
-model User {
-  id       String @id @default(uuid())
-  name     String
-  username String @unique
-  password String
-  role     String @default("admin")
 }

@@ -34,7 +34,7 @@ export default async function Home() {
       <section className="w-full py-10 flex flex-col items-center">
         <h1 className={`${sectionFont.className} uppercase text-3xl md:text-5xl lg:text-7xl font-extrabold text-zinc-800`}>🔥Estilos Elegant🔥</h1>
         <p className="text-gray-700 text-xl mt-2">Escoge tu estilo</p>
-        <Link href="/tienda" className="rounded-2xl text-white bg-black px-5 py-1 font-bold mt-5">
+        <Link href="/tienda/hombre" className="rounded-2xl text-white bg-black px-5 py-1 font-bold mt-5">
           Ve ya !
         </Link>
       </section>

@@ -8,7 +8,7 @@ export default function ShopLayout({
   return (
     <>
       <Header/>
-      <main className="md:pt-[140px]">
+      <main className="">
         {children}
       </main>
       <Footer/>
