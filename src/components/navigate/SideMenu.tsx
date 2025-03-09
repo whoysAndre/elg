@@ -72,8 +72,6 @@ export const SideMenu = () => {
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
                   <li><Link href="/tienda/hombre">Zapatillas</Link></li>
-                  <li><Link href="/tienda/hombre">Polos</Link></li>
-                  <li><Link href="/tienda/hombre">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>
@@ -86,8 +84,6 @@ export const SideMenu = () => {
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
                   <li><Link href="/tienda/mujer">Zapatillas</Link></li>
-                  <li><Link href="/tienda/mujer">Polos</Link></li>
-                  <li><Link href="/tienda/mujer">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>
@@ -100,8 +96,6 @@ export const SideMenu = () => {
               <AccordionContent className="pl-8">
                 <ul className="flex flex-col gap-4">
                   <li><Link href="/tienda/nino">Zapatillas</Link></li>
-                  <li><Link href="/tienda/nino">Polos</Link></li>
-                  <li><Link href="/tienda/nino">Pantalones</Link></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>

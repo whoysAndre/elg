@@ -14,8 +14,9 @@ export default async function AdminLayout({
   };
 
   return (
-    <>
+    <div className="md:mt-20">
+
       {children} 
-    </>
+    </div>
   );
 }
