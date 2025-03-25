@@ -4,7 +4,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 export const LogoWapp = () => {
   
   const onOpenWapp = ()=>{
-    const whatsappURL = `https://wa.me/51924998757`;
+    const whatsappURL = `https://wa.me/51984723637`;
     window.open(whatsappURL, "_blank");
   }
   
